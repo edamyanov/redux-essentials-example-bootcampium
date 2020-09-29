@@ -5,7 +5,7 @@ import {
   belongsTo,
   hasMany,
   association,
-  RestSerializer,
+  RestSerializer
 } from 'miragejs'
 
 import { nanoid } from '@reduxjs/toolkit'
@@ -16,14 +16,14 @@ import { parseISO } from 'date-fns'
 import seedrandom from 'seedrandom'
 
 const IdSerializer = RestSerializer.extend({
-  serializeIds: 'always',
+  serializeIds: 'always'
 })
 
 // Set up a seeded random number generator, so that we get
 // a consistent set of users / entries each time the page loads.
 // This can be reset by deleting this localStorage value,
 // or turned off by setting `useSeededRNG` to false.
-let useSeededRNG = true
+const useSeededRNG = true
 
 let rng = seedrandom()
 
@@ -44,7 +44,7 @@ if (useSeededRNG) {
   faker.seed(seedDate.getTime())
 }
 
-function getRandomInt(min, max) {
+function getRandomInt (min, max) {
   min = Math.ceil(min)
   max = Math.floor(max)
   return Math.floor(rng() * (max - min + 1)) + min
@@ -58,14 +58,15 @@ const randomFromArray = (array) => {
 const notificationTemplates = [
   'poked you',
   'says hi!',
-  `is glad we're friends`,
-  'sent you a gift',
+  'is glad we\'re friends',
+  'sent you a gift'
 ]
 
+// eslint-disable-next-line no-new
 new Server({
-  routes() {
+  routes () {
     this.namespace = 'fakeApi'
-    //this.timing = 2000
+    this.timing = 2000
 
     this.resource('users')
     this.resource('posts')
@@ -120,7 +121,7 @@ new Server({
           message: template,
           user: user.id,
           read: false,
-          isNew: true,
+          isNew: true
         }
       })
 
@@ -129,86 +130,86 @@ new Server({
   },
   models: {
     user: Model.extend({
-      posts: hasMany(),
+      posts: hasMany()
     }),
     post: Model.extend({
       user: belongsTo(),
-      comments: hasMany(),
+      comments: hasMany()
     }),
     comment: Model.extend({
-      post: belongsTo(),
+      post: belongsTo()
     }),
-    notification: Model.extend({}),
+    notification: Model.extend({})
   },
   factories: {
     user: Factory.extend({
-      id() {
+      id () {
         return nanoid()
       },
-      firstName() {
+      firstName () {
         return faker.name.firstName()
       },
-      lastName() {
+      lastName () {
         return faker.name.lastName()
       },
-      name() {
+      name () {
         return faker.name.findName(this.firstName, this.lastName)
       },
-      username() {
+      username () {
         return faker.internet.userName(this.firstName, this.lastName)
       },
 
-      afterCreate(user, server) {
+      afterCreate (user, server) {
         server.createList('post', 3, { user })
-      },
+      }
     }),
     post: Factory.extend({
-      id() {
+      id () {
         return nanoid()
       },
-      title() {
+      title () {
         return sentence()
       },
-      date() {
+      date () {
         return faker.date.recent(7)
       },
-      content() {
+      content () {
         return article(1)
       },
-      reactions() {
+      reactions () {
         return {
           thumbsUp: 0,
           hooray: 0,
           heart: 0,
           rocket: 0,
-          eyes: 0,
+          eyes: 0
         }
       },
-      afterCreate(post, server) {
-        //server.createList('comment', 3, { post })
+      afterCreate (post, server) {
+        // server.createList('comment', 3, { post })
       },
 
-      user: association(),
+      user: association()
     }),
     comment: Factory.extend({
-      id() {
+      id () {
         return nanoid()
       },
-      date() {
+      date () {
         return faker.date.past(2)
       },
-      text() {
+      text () {
         return paragraph()
       },
-      post: association(),
-    }),
+      post: association()
+    })
   },
   serializers: {
     user: IdSerializer,
     post: IdSerializer,
-    comment: IdSerializer,
+    comment: IdSerializer
   },
-  seeds(server) {
+  seeds (server) {
     server.createList('user', 3)
-  },
+  }
 })
