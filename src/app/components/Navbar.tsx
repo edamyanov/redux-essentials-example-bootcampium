@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   fetchNotifications,
   selectAllNotifications
-} from '../features/notifications/notificationsSlice'
+} from '../../features/notifications/notificationsSlice'
+import logo from '../../logoBootcampium.png'
 
 export const Navbar = () => {
   const dispatch = useDispatch()
@@ -25,7 +26,7 @@ export const Navbar = () => {
   return (
     <nav>
       <section>
-        <h1>Redux Essentials Example</h1>
+        <h1> Bootcampium <img src={logo} alt="Logo" width="70px" /></h1>
 
         <div className='navContent'>
           <div className='navLinks'>

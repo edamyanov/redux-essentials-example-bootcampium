@@ -6,7 +6,7 @@ import {
   PayloadAction
 } from '@reduxjs/toolkit'
 import { client } from '../../api/client'
-import { Post, Reaction } from '../../app/types'
+import { Post, Reaction } from '../../types/common'
 import { RootState } from '../../app/store'
 
 const postsAdapter = createEntityAdapter<Post>({

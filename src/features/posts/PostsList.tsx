@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { fetchPosts, selectPostIds } from './postSlice'
 import PostExcerpt from './PostExcerpt'
 import { RootState, useAppDispatch } from '../../app/store'
+import { Link } from 'react-router-dom'
 
 export const PostsList = () => {
   const dispatch = useAppDispatch()
@@ -29,7 +30,12 @@ export const PostsList = () => {
 
   return (
     <section className="posts-list">
-      <h2>Posts</h2>
+      <div style={ { display: 'flex', justifyContent: 'space-between' } }>
+        <h2>Posts</h2>
+        <Link to={'/posts/new'} className="button" style={ { alignSelf: 'center' } } >
+          Add New Post
+        </Link>
+      </div>
       {error}
       {content}
     </section>

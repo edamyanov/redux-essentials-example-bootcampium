@@ -1,5 +1,5 @@
 :root {
-  --redux-color: #764abc;
+  --redux-color: #2f9a05;
 }
 
 body {
@@ -43,7 +43,7 @@ nav a:active {
   padding: 0.25rem 1.5rem;
   border-radius: 4px;
   color: white !important;
-  background: #481499;
+  background: #0c5e0e;
 }
 
 nav a:first-of-type {
@@ -52,7 +52,7 @@ nav a:first-of-type {
 
 nav a:hover {
   color: white;
-  background: #926bcf;
+  background: #8cba8d;
 }
 
 .navContent {
@@ -113,7 +113,7 @@ section h1 {
 }
 
 .post-excerpt {
-  padding: 0.25rem 0.25rem;
+  padding: 1rem 1rem;
   border: 1px solid rgb(177, 174, 174);
   border-radius: 7px;
 }
@@ -131,13 +131,14 @@ p.post-content {
   margin-top: 10px;
 }
 
-.button {
+.default-button {
   display: inline-block;
   background: #1976d2;
   color: white;
   border-radius: 4px;
   font-weight: 700;
   padding: 0.75rem 1.5rem;
+  margin: 0 0.75rem;
 }
 
 button:disabled,

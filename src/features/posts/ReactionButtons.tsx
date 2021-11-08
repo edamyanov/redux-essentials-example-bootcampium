@@ -1,7 +1,7 @@
 import React from 'react'
 import { reactionAdded } from './postSlice'
 import { useAppDispatch } from '../../app/store'
-import { Post, Reaction } from '../../app/types'
+import { Post, Reaction } from '../../types/common'
 
 const reactionEmoji = {
   thumbsUp: '👍',

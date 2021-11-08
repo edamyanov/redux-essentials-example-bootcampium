@@ -4,8 +4,9 @@ import { addNewPost } from './postSlice'
 import { unwrapResult } from '@reduxjs/toolkit'
 import { selectAllUsers } from '../users/usersSlice'
 import { useAppDispatch } from '../../app/store'
+import { Link } from 'react-router-dom'
 
-export const AddPostForm = () => {
+export const AddNewPostPage = () => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [userId, setUserId] = useState('')
@@ -36,6 +37,7 @@ export const AddPostForm = () => {
         setTitle('')
         setContent('')
         setUserId('')
+        alert('New post has been added successfully')
       } catch (err) {
         console.error('Failed to save the post: ', err)
       } finally {
@@ -75,6 +77,9 @@ export const AddPostForm = () => {
           onChange={onContentChanged}
         />
         <button type="button" onClick={onSavePostClicked}>Save Post</button>
+        <Link to={'/posts'} className="button" style={ { marginLeft: '10px' } }>
+          Go to posts
+        </Link>
       </form>
     </section>
   )

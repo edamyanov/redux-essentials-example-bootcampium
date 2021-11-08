@@ -20,10 +20,10 @@ const PostExcerpt = ({ postId }: PostExcerptProps) => {
         </div>
         <p>{post.content.substring(0, 100)}</p>
         <ReactionButtons post={post} />
-        <Link to={`/editPost/${post.id}`} className="button">
+        <Link to={`/editPost/${post.id}`} className="default-button">
           Edit Post
         </Link>
-        <Link to={`/posts/${post.id}`} className="button muted-button">
+        <Link to={`/posts/${post.id}`} className="default-button muted-button">
           View Post
         </Link>
       </article>

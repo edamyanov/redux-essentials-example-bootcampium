@@ -5,7 +5,7 @@ import {
 } from '@reduxjs/toolkit'
 import { client } from '../../api/client'
 import { RootState } from '../../app/store'
-import { User } from '../../app/types'
+import { User } from '../../types/common'
 
 const usersAdapter = createEntityAdapter<User>()
 

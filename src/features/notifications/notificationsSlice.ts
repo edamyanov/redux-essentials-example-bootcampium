@@ -1,12 +1,6 @@
-import {
-  createAction,
-  createAsyncThunk,
-  createEntityAdapter,
-  createSlice, EntityState,
-  PayloadAction
-} from '@reduxjs/toolkit'
+import { createAsyncThunk, createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { client } from '../../api/client'
-import { Notification } from '../../app/types'
+import { Notification } from '../../types/common'
 import { RootState } from '../../app/store'
 
 const notificationsAdapter = createEntityAdapter<Notification>({
@@ -17,8 +11,7 @@ const notificationsAdapter = createEntityAdapter<Notification>({
 export const fetchNotifications = createAsyncThunk(
   'notifications/fetchNotifications',
   async (_, { getState }) => {
-    const allNotifications = selectAllNotifications((getState() as RootState))
-    const [latestNotification] = allNotifications
+    const [latestNotification] = selectAllNotifications((getState() as RootState))
     const latestTimestamp = latestNotification ? latestNotification.date : ''
     const response = await client.get(
       `/fakeApi/notifications?since=${latestTimestamp}`
@@ -26,7 +19,6 @@ export const fetchNotifications = createAsyncThunk(
     return response.notifications
   }
 )
-
 
 const notificationsSlice = createSlice({
   name: 'notifications',
@@ -39,7 +31,7 @@ const notificationsSlice = createSlice({
     }
   },
   extraReducers: {
-    "notifications/fetchNotifications/fulfilled": (
+    'notifications/fetchNotifications/fulfilled': (
       state, action: PayloadAction<Notification[]>) => {
       console.log(fetchNotifications.fulfilled.toString())
       Object.values(state.entities).forEach(notification => {

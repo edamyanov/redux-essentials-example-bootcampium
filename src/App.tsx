@@ -6,14 +6,14 @@ import {
   Redirect
 } from 'react-router-dom'
 
-import { Navbar } from './app/Navbar'
+import { Navbar } from './app/components/Navbar'
 import { PostsList } from './features/posts/PostsList'
-import { AddPostForm } from './features/posts/AddPostForm'
 import { SinglePostPage } from './features/posts/SinglePostPage'
 import { EditPostForm } from './features/posts/EditPostForm'
 import UserPage from './features/users/UserPage'
-import { NotificationsList } from './features/notifications/notificationList'
+import { NotificationsList } from './features/notifications/NotificationList'
 import UsersList from './features/users/UsersList'
+import { AddNewPostPage } from './features/posts/AddNewPostPage'
 
 function App () {
   return (
@@ -24,13 +24,9 @@ function App () {
           <Route
             exact
             path='/'
-            render={() => (
-              <>
-                <AddPostForm />
-                <PostsList />
-              </>
-            )}
+            render={() => <PostsList />}
           />
+          <Route exact path='/posts/new' component={AddNewPostPage} />
           <Route exact path='/posts/:postId' component={SinglePostPage} />
           <Route exact path='/editPost/:postId' component={EditPostForm} />
           <Route exact path='/users' component={UsersList} />

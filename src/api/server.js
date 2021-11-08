@@ -211,5 +211,6 @@ new Server({
   },
   seeds (server) {
     server.createList('user', 3)
+    server.create('user', { id: 1, firstName: 'Emo', lastName: 'Damyanov', username: 'edamyanov' })
   }
 })
