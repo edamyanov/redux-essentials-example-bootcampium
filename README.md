@@ -1,3 +1,7 @@
+
+![Website screenshot](https://github.com/edamyanov/redux-essentials-example-bootcampium/blob/master/src/screenshot.png?raw=true)
+
+
 # Redux Essentials Tutorial Example (In TypeScript)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
